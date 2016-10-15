@@ -1,0 +1,28 @@
+<!-- Always shows a header, even in smaller screens. -->
+<header class="mdl-layout__header">
+  <div class="mdl-layout__header-row">
+    <!-- Title -->
+    <span class="title mdl-layout-title">
+      <a href="{{ site.url }}{{ site.baseurl }}/">
+        opensensorsdata
+      </a>
+    </span>
+    <!-- Add spacer, to align navigation to the right -->
+    <div class="mdl-layout-spacer"></div>
+    {% include osd-home-nav-search.html %}
+  </div>
+</header>
+<div class="osd-drawer mdl-layout__drawer">
+  <span class="osd-menu mdl-layout-title">
+    <img class="osd-menu-logo" src="{{ site.url }}{{ site.baseurl }}/assets/img/osd-icons/osd-logo-icon.svg">
+    opensensorsdata
+  </span>
+  <nav class="mdl-navigation">
+    {% for node in site.data.nodes %}
+      <a href="{{ site.url }}{{ site.baseurl }}/{{ node.link }}" class="mdl-navigation__link {% if page.url contains node.link %}active{% endif %}">
+        <button class="mdl-button mdl-js-button mdl-button--icon"><img src="{{ site.url }}{{ site.baseurl }}/{{ node.icon }}"></button> {{ node.name | escape }}
+      </a>
+
+    {% endfor %}
+  </nav>
+</div>
